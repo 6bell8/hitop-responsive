@@ -1,0 +1,60 @@
+//주석입니다. (표기가 안되는 주석)
+//$변수명 : 변수의 값;
+//변수의 유효범위는 {}를 기준으로 한다.
+//!global을 flag를 붙히면 전여긍로 사용이 가능하지만 굳이 사용하진 않는다.
+//margin, padding 값 곱하기 할 때는 (30*10) < 이런 식으로 괄호를 쳐준다.
+//파일 앞에 _를 붙히면 컴파일돼서 나가지않는다.
+@import "vars";
+@import "mixin";
+
+#new ul li {
+  h3 {
+    @include ellipsis;
+  }
+  .desc {
+    @include multiEllipsis(2);
+  }
+}
+
+#mainVisual {
+  .slogan {
+    @include absCenter(false, true);
+    @include longShadow;
+  }
+}
+
+#header {
+  color: $font-color;
+  background-color: $gray-color;
+}
+
+$color: #111;
+$main-color: #222;
+#header {
+  .container {
+    display: flex;
+    #gnb {
+      color: $color;
+      .list {
+        display: flex;
+        li {
+          &:hover .depth01 {
+            color: $main-color;
+          }
+          .depth01 {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+@at-root .box {
+  display: block;
+}
+//그룹에서 제외되는 태그
+
+.business {
+  color: $color;
+}

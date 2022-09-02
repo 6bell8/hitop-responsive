@@ -1,0 +1,429 @@
+@import "vars";
+@import "mixin";
+
+.subVisual {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  background: {
+    repeat: no-repeat;
+    size: cover;
+    position: 50% 50%;
+  }
+  .titleBox {
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+    .subTitle {
+      font-size: $font-large;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+  }
+
+  #lnb {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 50px;
+    color: #111;
+    .container {
+      display: flex;
+      .home {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        text-indent: -999px;
+        justify-content: center;
+        align-items: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        &:before {
+          text-indent: 0;
+          font-size: 24px;
+          color: #fff;
+          @include icon("home", 0);
+        }
+      }
+      .menu {
+        width: 200px;
+        &:hover {
+          ul {
+            display: block;
+          }
+        }
+        &:nth-of-type(2) button {
+          border-right: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        button {
+          border: none;
+          background: none;
+          height: 50px;
+          padding: 0 20px;
+          color: #fff;
+          font-size: 16px;
+          border-left: 1px solid rgba(255, 255, 255, 0.5);
+          width: 100%;
+          text-align: left;
+        }
+        ul {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-top: none;
+          display: none;
+          li {
+            border-top: 1px solid #ccc;
+            a {
+              display: block;
+              padding: 0px 20px;
+              height: 50px;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  &::before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, rgba(195, 34, 34, 1) 0%, rgba(224, 40, 40, 1) 50%, rgba(204, 204, 204, 1) 50%, rgba(204, 204, 204, 1) 100%);
+    margin-right: 15px;
+  }
+}
+
+@for $i from 1 to 6 {
+  #subVisual0#{$i} {
+    background-image: url(../images/contents/subVisual0#{$i}.jpg);
+  }
+}
+
+.tab {
+  .tabMenu {
+    display: flex;
+    li {
+      flex-basis: 25%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-left: none;
+      &.active {
+        background-color: $main-color;
+        a {
+          background-color: $main-color;
+          color: #fff;
+        }
+      }
+      a {
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .tabContents {
+    position: relative;
+    > li {
+      display: none;
+      &:nth-child(1) {
+        display: block;
+      }
+      &:target {
+        display: block;
+      }
+      &:not(:target) {
+        display: none;
+      }
+    }
+  }
+}
+
+.subContents {
+  min-height: 100vh;
+  margin-bottom: 100px;
+  padding: 50px;
+  .contentsTitle {
+    position: relative;
+    font-size: $font-large - 10px;
+    font-weight: 700;
+    text-align: center;
+    margin: 80px 0;
+    &::after {
+      @include pseudo(block, relative, "");
+      @include box(40px, 5px, $main-color);
+      margin: 30px auto;
+    }
+  }
+  .desc {
+    position: relative;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .contents {
+  }
+  .txtBox {
+    text-align: center;
+    font-weight: 300;
+    margin-top: 50px;
+    line-height: 1.5;
+    word-break: keep-all;
+    .main {
+      margin-bottom: 30px;
+      font-size: $font-large;
+      line-height: 1.25;
+      strong {
+        font-weight: 500;
+        .red {
+          color: $main-color;
+        }
+      }
+      p {
+        margin-bottom: 50px;
+        line-height: 1.5;
+        word-break: keep-all;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+.desc {
+  text-align: center;
+  margin-top: 50px;
+  .headTxt {
+    font-size: $font-large;
+    line-height: 1.25;
+    font-weight: 300;
+    margin-bottom: 50px;
+    strong {
+      font-weight: 500;
+      .red {
+        color: $main-color;
+      }
+    }
+  }
+  .txtBox {
+    text-align: justify;
+    p {
+      margin-bottom: 50px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+  }
+}
+
+#greeting {
+  .container {
+    display: flex;
+    img {
+      align-self: flex-start;
+    }
+  }
+  .desc {
+    text-align: left;
+    padding-left: 80px;
+    margin-top: 0;
+    .txtBox {
+      text-align: left;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+#introduce {
+  .summaryBox {
+    display: flex;
+    .titleTxt {
+      width: 50%;
+      height: 300px;
+      text-align: center;
+      color: #fff;
+      background-image: url(../images/contents/bg_logo.png);
+      background-color: $main-color;
+      background-repeat: no-repeat;
+      background-position: right 0 bottom 0;
+
+      h2 {
+        line-height: 1.25;
+        margin-top: 30px;
+        font-size: $font-large;
+        font-weight: 700;
+        &::after {
+          @include pseudo(block, relative, "");
+          @include box(40px, 1px, #fff);
+          margin: auto;
+          margin-top: 30px;
+        }
+      }
+      p {
+        margin-top: 30px;
+        font-size: 21px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+    }
+    .titleImg {
+      height: 300px;
+      background-image: url(../images/contents/titleImgBox_summary.jpg);
+      width: 50%;
+    }
+  }
+}
+
+#history {
+  .historyBox {
+    margin-top: 100px;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+      background-color: #ccc;
+    }
+    .yearBox {
+      display: flex;
+      position: relative;
+      &:after {
+        margin-top: 20px;
+        left: 49.3%;
+        position: absolute;
+        z-index: 1;
+        @include pseudo;
+        @include box(10px, 10px, rgb(223, 223, 223));
+        border-radius: 100px;
+        border: 5px solid $main-color;
+      }
+
+      &:nth-child(2n) {
+        justify-content: flex-end;
+        padding-left: 140px;
+      }
+      &:nth-child(2n + 1) {
+        text-align: right;
+        padding-right: 100px;
+        .inner {
+          .monthBox {
+            li {
+              flex-direction: row-reverse;
+              // justify-content: flex-start;
+              .month {
+                margin-right: 0;
+                margin-left: 20px;
+              }
+            }
+          }
+        }
+      }
+
+      .inner {
+        width: 50%;
+        .year {
+          font-size: $font-large;
+          font-weight: 700;
+          margin-bottom: 30px;
+        }
+        .monthBox {
+          li {
+            display: flex;
+            margin-bottom: 20px;
+            .month {
+              font-weight: 700;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#location {
+  #map {
+    height: 500px;
+    background-color: #ccc;
+    margin-bottom: 50px;
+  }
+  .tab {
+    .tabMenu {
+      margin-bottom: 50px;
+    }
+  }
+}
+
+#estiamate {
+  #news {
+    margin-bottom: 100px;
+  }
+}
+
+.overlay {
+  background-color: $main-color;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  @include longShadow(darken($main-color, 10), 60);
+  top: -100%;
+  .address {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: $main-color;
+    position: absolute;
+    left: calc(50% + 5px);
+    bottom: -20px;
+  }
+}
+
+.searchForm {
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  padding: 80px 150px;
+  #searchTxt {
+    height: 50px;
+    padding: 0 10px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    margin-right: 5px;
+    flex-grow: 1;
+  }
+  #searchCatagory {
+    height: 50px;
+    padding: 0 10px;
+    border: 1px solid #999;
+    width: 120px;
+    margin-right: 5px;
+  }
+  button {
+    width: 80px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 10px;
+  }
+}

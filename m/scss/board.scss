@@ -1,0 +1,169 @@
+@import "vars";
+@import "mixin";
+
+.contentsTable {
+  width: 100%;
+  border-top: 2px solid $main-color;
+  tbody,
+  thead {
+    th {
+      padding: 15px 0px;
+      border-bottom: 1px solid #999;
+      font-size: 13px;
+      font-family: "Noto Sans KR";
+      font-weight: 700;
+      color: #333;
+    }
+    td {
+      padding: 15px 10px;
+      border-bottom: 1px solid #999;
+      border-left: 1px solid #999;
+      font-size: 13px;
+      font-family: "Noto Sans KR";
+      font-weight: 700;
+      color: #555;
+      &:nth-child(1) {
+        border-left: none;
+      }
+    }
+  }
+}
+.boardTable {
+  width: 100%;
+  border-top: 2px solid $main-color;
+  tbody,
+  thead {
+    th,
+    td {
+      padding: 15px 5px;
+      border-bottom: 1px solid #999;
+      text-align: center;
+    }
+  }
+  tbody {
+    tr:nth-child(2n) {
+      background-color: #fff;
+    }
+  }
+  thead {
+    font-weight: 700;
+  }
+  .subject {
+    text-align: left;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+  }
+  a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 1px;
+    &.first {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_double_arrow_left", 0);
+      }
+    }
+    &.prev {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_arrow_left", 0);
+      }
+    }
+    &.last {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_double_arrow_right", 0);
+      }
+    }
+    &.next {
+      background-color: #111;
+      &:before {
+        color: #fff;
+        @include icon("keyboard_arrow_right", 0);
+      }
+    }
+    &.active {
+      background-color: $main-color;
+      color: #fff;
+      border-radius: 3px;
+    }
+  }
+}
+
+.listTable {
+  width: 1200px;
+  margin: 0 auto;
+  border-top: 2px solid $main-color;
+
+  tbody,
+  thead {
+    th,
+    td {
+      padding: 15px 10px;
+      border-bottom: 1px solid #999;
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+  tbody {
+    line-height: 1.6;
+    line-break: keep-all;
+    > tr {
+      td {
+        vertical-align: middle;
+        button {
+          top: 15px;
+          border: 1px solid #bf0c14;
+          display: inline-block;
+          width: 130px;
+          height: 40px;
+          line-height: 38px;
+          color: #bf0c14;
+          font-size: 15px;
+          border-radius: 5px;
+          transition: all 0.25s;
+          vertical-align: middle;
+          font-size: 16px;
+          &::before {
+            @include icon("link", 0);
+            font-weight: 700;
+            vertical-align: top;
+          }
+          &:hover {
+            color: #fff;
+            background-color: $main-color;
+          }
+        }
+      }
+    }
+  }
+  thead {
+    font-weight: 700;
+  }
+  .subject {
+    border-left: 1px solid #999;
+  }
+  #listImg {
+    padding-top: 30px;
+    > img {
+      vertical-align: top;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+}

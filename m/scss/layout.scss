@@ -1,0 +1,263 @@
+@import "vars";
+@import "mixin";
+
+.body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: $font-normal;
+  color: $font-color;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  .btn {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    overflow: hidden;
+    padding: 0 20px;
+    border-radius: 100px;
+    background-color: $main-color;
+    @include longShadow(darken($main-color, 10), 40);
+  }
+}
+
+#header {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: 99;
+  color: #fff;
+  &.open {
+    .online {
+      opacity: 1;
+      color: #111;
+    }
+    #gnb {
+      left: 0;
+    }
+    .btnAll {
+      span {
+        background-color: #111;
+        &:nth-child(1) {
+          top: 29px;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          top: 29px;
+          left: -200px;
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          top: 29px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+  &::after {
+    width: 100%;
+    height: 1px;
+    top: 60px;
+    background-color: #fff;
+    pointer-events: none;
+    @include pseudo;
+  }
+  .container {
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    z-index: 2;
+    img {
+      filter: drop-shadow(1px 0px 1px #111);
+      height: 30px;
+    }
+  }
+  .online {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    padding: 0 10px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-size: 12px;
+    transition: all 0.25s ease;
+    opacity: 0;
+  }
+  #gnb {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    padding-top: 60px;
+    background-color: #fff;
+    color: #111;
+    left: 100%;
+    transition: all 0.25s ease;
+
+    .list {
+      > li {
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        .depth01 {
+          display: flex;
+          align-items: center;
+          height: 60px;
+          position: relative;
+          padding: 0 30px;
+          font-weight: 500;
+        }
+
+        .depth02 {
+          background-color: fff;
+          padding: 10px 0;
+          display: none;
+          li {
+            a {
+              display: flex;
+              padding: 10px 0 10px 40px;
+              font-size: 14px;
+              align-items: center;
+              &::before {
+                content: "";
+                display: block;
+                width: 3px;
+                height: 3px;
+                background-color: #f00;
+                border-radius: 100px;
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .btnAll {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 60px;
+    width: 60px;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    span {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: #fff;
+      box-shadow: 1px 1px 1px #888;
+      position: absolute;
+      left: 15px;
+      transition: all 0.25s ease;
+      &:nth-child(1) {
+        top: 19px;
+      }
+      &:nth-child(2) {
+        top: 29px;
+      }
+      &:nth-child(3) {
+        top: 39px;
+      }
+    }
+  }
+}
+
+#footer {
+  color: #ccc;
+  background-color: #333;
+  .utilMenu {
+    border-bottom: 1px solid #666;
+    font-size: 12px;
+    ul {
+      display: flex;
+      justify-content: center;
+      li {
+        //자식에게 링크를 부여하는 것이 링크 클릭하기 더 수월하다.
+        //슬래쉬 순서를 정할 수 있는 것은 li이다.
+        &:nth-child(1) a::before {
+          display: none;
+        }
+        a {
+          display: block;
+          position: relative;
+          padding: 20px 10px;
+
+          &::before {
+            width: 1px;
+            height: 14px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: #666;
+            @include pseudo;
+          }
+        }
+      }
+    }
+  }
+  .addressBox {
+    padding: 30px 0;
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .fLogo {
+        img {
+          height: 50px;
+        }
+      }
+      .address {
+        text-align: center;
+        font-size: 12px;
+        margin-top: 20px;
+        .info {
+          margin: 5px 0 30px;
+
+          span {
+            display: block;
+            margin: 10px 0;
+          }
+        }
+        .copyright {
+          color: #666;
+        }
+      }
+      .tel {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 30px;
+        //남아있는 왼쪽 마진을 다 가져감, margin-right: auto; 같이 쓰면 가운데 정렬
+        strong {
+          margin-top: 10px;
+          font-size: $font-large / 3;
+          letter-spacing: -0.02em;
+        }
+      }
+    }
+  }
+}

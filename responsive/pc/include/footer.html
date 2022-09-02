@@ -1,0 +1,146 @@
+
+    <footer id="footer"> <!-- /*footer는 아래 영역*/ -->
+        <div class="utilMenu">
+          <ul>
+            <li> <a href="">이용약관</a></li>
+            <!-- prettier-ignore -->
+            <li> <a href=""><strong>개인정보보호정책</strong></a></li>          
+            <li><a href="">사이트맵</a></li>        
+            <li><a href="">온라인견적문의</a></li>
+          </ul>
+        </div>
+        <div class="addressBox">
+          <div class="container">
+            <div class="fLogo"><img src="../images/layout/fLogo.png" alt=""></div>
+            <div class="address">
+              <p class="title">하이탑 : 서울 송파구 성내천로 14길 13 (3층)</p>
+              <!-- prettier-ignore -->
+              <p class="info">
+                <span>대표전화 : 070-7715-4400 </span>
+                <span>이메일 : hitop4400@hanmail.net</span>
+                <span>사업자번호 : 402-81-83259</span>
+              </p>
+              <p class="copyright">
+                Copyright ⓒ 2018 HITOP. All rights reserved
+              </p>
+            </div>
+            <!-- prettier-ignore -->
+            <div class="tel">
+              <span>고객만족센터</span>
+              <strong>070-7715-4400</strong>
+                </div>
+             </div>
+          </div>
+      </footer>
+
+      <script>
+        const btnAll = $(".btnAll");
+        const header = $("#header");
+        const depth01 = $("#gnb .depth01");
+        const depth02 = $("#gnb .depth02"); // document.queryS
+        
+        const lnbDepth01 = $("#lnb .depth01 ul");
+        const lnbDepth02 = $("#lnb .depth02 ul");
+
+        const lnbButton = $("#lnb .menu button");
+
+        const lnb = $("#lnb");
+
+        // let lnbOffsetStop = lnb.offset().top; 
+        let lnbTop = 350;
+
+        lnbButton.on("click",function(){
+        if(header.hasClass("mobile")){ //모바일 클래스를 가질 때!
+        const ul = $(this).next();
+        ul.slideToggle();
+        }
+        });
+
+
+
+
+        //console 찍을 때 
+        //ctrl + alt + L (콘솔)
+        //alt +shift + c(주석)
+        //alt +shift + u(주석 해제)
+
+
+        // console.log("🚀 ~ file: footer.html ~ line 38 ~ btnAll", btnAll)
+        // const btnAll02 = document.querySelector(".btnAll")
+        // console.log("🚀 ~ file: footer.html ~ line 40 ~ btnAll", btnAll)
+
+          //자바에서 찾는 것(document.queryselector)과 jquery에서 찾아서 쓰는 것과 다르다
+
+          //자바는 mbn에서 찾는 것을 사용해야한다.
+         const btnAllClick = function(){
+
+         }
+          btnAll.on("click",function(e){
+            e.preventDefault(); // e.preventDefault를 사용하려면 매개변수에 e가 들어가 있어야한다.
+            header.toggleClass("open")
+            depth02.delay(500).slideUp(); // method chainning
+            return false;
+            // return false; //return을 받으면 하단에 기능이 실행이 안된다.
+            //a 태그에는 add, remove 기능을 사용할 수 있다.
+            
+          });
+          depth01.on("click",function(){
+            if(header.hasClass("mobile")){
+            const depth02 = $(this).next(); //this 클릭하고 있는 나 자신
+            //depth02.toggle(); // show (); hide (); 번갈아서 보여주는 것
+            //depth02.slideToggle();
+            depth02.fadeToggle();
+            return false;
+          }
+          });
+
+          // window.addEventListener("resize",function(){
+          //  // console.log("vanilla===",window.innerWidth);
+          //  const w = window.innerWidth;
+          //  if(w < 1200) {
+          //   header.addClass("mobile");
+          //  } else {
+          //   header.removeClass("mobile");
+          //  }
+          // });
+
+       
+          $(window).on("scroll", function(){
+            const st = $(window).scrollTop();
+            if(st>lnbTop) {
+              lnb.addClass("fixed");
+            } else {
+              lnb.removeClass("fixed");
+            }
+          });
+          $(window).on("resize",function(){
+              const w = $(window).outerWidth();
+              lnbTop = $(".subVisual").height() - 50;
+          // if(w<=960) {
+          //   lnbTop = 250;
+          // } else {
+          //   lnbTop = 350;
+          // }
+           if(w <= 1200) {
+            header.addClass("mobile");
+           } else {
+            header.removeClass("mobile open");
+            depth02.removeAttr("style");
+            lnbDepth01.removeAttr("style");
+            lnbDepth02.removeAttr("style");
+           }
+          });
+
+
+          // $(window).on("resize", function(){
+          //  // console.log("jQuery ===",$(window).width()); 스크롤바 포함하지아나
+          // })
+
+          //모바일 resize 이벤트를 전파해주는 기능 사이즈 조정 따로 안해도됨
+          
+          // window.dispatchEvent(new Event("resize"));  
+          $(window).trigger("resize"); // 시작 할 때부터 흔들어주는 기능
+
+      </script>
+    </body>
+  </html>

@@ -1,0 +1,193 @@
+@import "vars";
+@import "mixin";
+
+.body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: $font-normal;
+  color: $font-color;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 1200px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  .btn {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    overflow: hidden;
+    padding: 0 40px;
+    border-radius: 100px;
+    background-color: $main-color;
+    @include longShadow(darken($main-color, 10), 40);
+  }
+}
+
+#header {
+  width: 100%;
+  position: absolute;
+  z-index: 99;
+  color: #fff;
+  &::after {
+    width: 100%;
+    height: 1px;
+    top: 100px;
+    background-color: #fff;
+    pointer-events: none;
+    @include pseudo;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    position: static; // position default;
+    max-width: 1920px;
+  }
+  #logo {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 50px;
+  }
+  .online {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    padding: 0 30px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 100px;
+  }
+  #gnb {
+    .list {
+      display: flex;
+      > li {
+        &:hover {
+          .depth01 {
+            background-color: $main-color;
+            &::after {
+              transform: scaleX(1);
+            }
+          }
+          .depth02 {
+            display: block;
+          }
+        }
+        .depth01 {
+          display: flex;
+          align-items: center;
+          height: 100px;
+          position: relative;
+          padding: 0 50px;
+          font-size: 20px;
+          font-weight: 500;
+          &::after {
+            height: 2px;
+            right: 20px;
+            bottom: 0;
+            left: 20px;
+            transform: scaleX(0);
+            transition: transform 0.25s ease-in-out;
+            background-color: #fff;
+            @include pseudo;
+          }
+        }
+        .depth02 {
+          display: none;
+          padding: 30px 10px;
+          text-align: center;
+          color: #fff;
+          background-color: $main-color;
+          border-radius: 0 0 10px 10px;
+          li {
+            a {
+              display: block;
+              padding: 10px 0;
+              &:hover {
+                box-shadow: inset 0 0 3px 3px rgba(0, 0, 0, 0.15);
+                background-color: darken($main-color, 10);
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#footer {
+  color: #ccc;
+  background-color: #333;
+  .utilMenu {
+    border-bottom: 1px solid #666;
+    ul {
+      display: flex;
+      justify-content: center;
+      li {
+        //자식에게 링크를 부여하는 것이 링크 클릭하기 더 수월하다.
+        //슬래쉬 순서를 정할 수 있는 것은 li이다.
+        &:nth-child(1) a::before {
+          display: none;
+        }
+        a {
+          display: block;
+          position: relative;
+          padding: 20px 30px;
+
+          &::before {
+            width: 1px;
+            height: 14px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: #666;
+            @include pseudo;
+          }
+        }
+      }
+    }
+  }
+  .addressBox {
+    padding: 50px 0;
+    .container {
+      display: flex;
+      .address {
+        margin-left: 50px;
+        .info {
+          margin: 10px 0 30px;
+          span {
+            margin-right: 20px;
+          }
+        }
+        .copyright {
+          color: #666;
+        }
+      }
+      .tel {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto; //남아있는 왼쪽 마진을 다 가져감, margin-right: auto; 같이 쓰면 가운데 정렬
+        strong {
+          margin-top: 10px;
+          font-size: $font-large;
+          letter-spacing: -0.02em;
+        }
+      }
+    }
+  }
+}

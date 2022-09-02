@@ -1,0 +1,302 @@
+@import "vars";
+@import "mixin";
+
+.section {
+  padding: 30px 0;
+  .titleBox {
+    text-align: center;
+    margin-bottom: 20px;
+    h2 {
+      font-size: $font-large / 2;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+  .container {
+    // width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+#mainVisual {
+  overflow: hidden;
+  ul {
+    li {
+      height: 100vh;
+      background: {
+        position: 50% 50%;
+        size: cover;
+        repeat: no-repeat;
+      }
+      &.visual01 {
+        background-image: url(../images/main/mainVisual01.jpg);
+      }
+      &.visual02 {
+        background-image: url(../images/main/mainVisual02.jpg);
+      }
+      &.visual03 {
+        background-image: url(../images/main/mainVisual03.jpg);
+      }
+    }
+  }
+
+  .slogan {
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    user-select: none; // 슬로건 셀렉이 안되는 기능//
+    @include absCenter;
+    h2 {
+      margin-bottom: 10px;
+      font-size: $font-large / 1.75;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+  }
+  button {
+    width: 40px;
+    height: 40px;
+    background: none;
+    z-index: 3;
+    border: 1px solid #fff;
+    padding: 0;
+
+    @include absCenter(false, true);
+    .material-icons {
+      font-size: $font-large / 2;
+      color: #fff;
+      vertical-align: top;
+    }
+    &.prev {
+      left: 10px;
+    }
+    &.next {
+      right: 10px;
+    }
+  }
+  .iconScroll {
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    z-index: 1;
+    .icon {
+      display: block;
+      width: 18px;
+      height: 30px;
+      margin: 10px auto;
+      border: 2px solid #fff;
+      border-radius: 100px;
+      &::before {
+        width: 2px;
+        height: 5px;
+        margin: 10px auto; //margin auto를 시켰을 때 포지션이 abs이면 안된다.
+        background-color: #fff;
+        animation-name: mouseAnimation;
+        animation-duration: 0.75s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate; //애니메이션이 위아래 동시에 부드러워짐
+        animation: mouseAnimation 0.75s ease-in-out 0s infinite alternate;
+        @include pseudo(block, relative, "");
+      }
+    }
+  }
+}
+
+#quickMenu {
+  padding: 0;
+  .list {
+    display: flex;
+    margin-left: 20px;
+    padding: 5px;
+    li {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      // width: 33.33%;
+      &::before {
+        top: 10px;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        transition: opacity 0.25s ease;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        pointer-events: none;
+        z-index: 1;
+        @include pseudo;
+        display: none;
+      }
+      img {
+        transition: transform 0.25s ease-in-out;
+        vertical-align: top;
+        width: 100px;
+        padding: 5px;
+      }
+      .txtBox {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: #fff;
+
+        h3 {
+          margin-top: 5px;
+          font-size: $font-normal;
+          font-weight: 700;
+        }
+        p {
+          font-size: $font-normal - 5px;
+          margin-bottom: 15px;
+          word-break: keep-all;
+        }
+      }
+    }
+  }
+}
+
+#business {
+  background: {
+    image: url(../images/main/bgBusiness.jpg);
+    size: cover;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    width: 375px;
+    li {
+      position: relative;
+      overflow: hidden;
+      margin: 5px;
+      width: calc(50% - 10px);
+      .txtBox {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: #fff;
+        h3 {
+          font-size: $font-medium / 1.5;
+          margin-bottom: 0px;
+        }
+        p {
+          font-size: 12px;
+          display: none;
+        }
+      }
+      img {
+        // filter: saturate(0);
+        vertical-align: top;
+        transition: all 0.25s ease-in-out;
+        width: 100%;
+      }
+    }
+  }
+}
+
+#news {
+  overflow: hidden;
+  .list {
+    display: flex;
+    // justify-content: space-between;
+    // margin 이렇게 많이 쓴다
+    margin: 0 -10px;
+    li {
+      width: 50%;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+      }
+      .desc {
+        padding: 20px;
+        padding: 10px;
+
+        h3 {
+          font-size: $font-medium / 1.5;
+          @include ellipsis;
+          margin-bottom: 30px;
+        }
+        .txt {
+          @include multiEllipsis(3, 1.5);
+          margin-bottom: 20px;
+          font-size: 12px;
+        }
+        .date {
+          color: #999;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+#customer {
+  color: #fff;
+  .titleBox {
+    h2::after {
+      @include pseudo(block, relative, "");
+      width: 30px;
+      height: 2px;
+      margin: 20px auto;
+      background-color: #fff;
+      margin: 30px auto;
+    }
+    p {
+      line-height: 1.5;
+      padding: 0 50px;
+      br {
+        content: ""; //br 태그를 scss에서 없애는 방법//
+      }
+    }
+  }
+  background: {
+    image: url(../images/main/bgCustomer.jpg);
+    size: cover;
+    position: 50% 50%;
+  }
+}
+
+.subVisual {
+  height: 400px;
+  background-color: #000;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  .subTitle {
+    font-size: $font-large - 15px;
+  }
+}
+.subContents {
+  // min-height: 800px;
+  padding: 100px 0;
+  .contentsTitle {
+    text-align: center;
+    font-size: 32px;
+  }
+}
+
+@keyframes mouseAnimation {
+  // from{
+
+  // }
+  // to{
+
+  // }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}

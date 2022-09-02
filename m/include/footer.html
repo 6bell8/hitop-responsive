@@ -1,0 +1,96 @@
+
+    <footer id="footer"> <!-- /*footer는 아래 영역*/ -->
+        <div class="utilMenu">
+          <ul>
+            <li> <a href="">이용약관</a></li>
+            <!-- prettier-ignore -->
+            <li> <a href=""><strong>개인정보보호정책</strong></a></li>          
+            <li><a href="">사이트맵</a></li>        
+            <li><a href="">온라인견적문의</a></li>
+          </ul>
+        </div>
+        <div class="addressBox">
+          <div class="container">
+            <div class="fLogo"><img src="../images/layout/fLogo.png" alt=""></div>
+            <div class="address">
+              <p class="title">하이탑 : 서울 송파구 성내천로 14길 13 (3층)</p>
+              <!-- prettier-ignore -->
+              <p class="info">
+                <span>대표전화 : 070-7715-4400 </span>
+                <span>이메일 : hitop4400@hanmail.net</span>
+                <span>사업자번호 : 402-81-83259</span>
+              </p>
+              <p class="copyright">
+                Copyright ⓒ 2018 HITOP. All rights reserved
+              </p>
+            </div>
+            <!-- prettier-ignore -->
+            <div class="tel">
+              <span>고객만족센터</span>
+              <strong>070-7715-4400</strong>
+                </div>
+             </div>
+          </div>
+      </footer>
+      
+
+
+    <script>
+
+
+const header = $("#header");
+  const btnAll = $("#header .btnAll");
+  const depth01 = $("#gnb .depth01");
+  const lnbDepth01 = $("#lnb .menu button");
+  
+  
+  //this,closure,event loop, browser rendering,
+  
+  btnAll.on("click", function () {
+  header.toggleClass("open");
+  });
+  //a에 클릭이벤트가 걸리면 반드시 기존 a가 가지고 있는 링크기능을 무력화 시켜야 한다.
+  //form안에 있는 button에 클릭 이벤트가 걸리면 기존 button이 가지고 있는 action 링크 기능을 무력화 시켜야 한다.
+  depth01.on("click",function(e) {
+    // e.preventDefault();
+    console.log(this);
+    console.log($(this));
+    const depth02 = $(this).next(".depth02");
+    depth02.slideToggle();
+    return false;
+  });
+  
+  lnbDepth01.on("click",function(e) {
+    e.preventDefault();
+    $(this).next("ul").slideToggle();
+  })
+  
+
+//     const depth01 = $("#gnb .depth01");
+//     console.log("🚀 ~ file: footer.html ~ line 43 ~ depth01", depth01)
+//     const depth02 = $(".depth02");
+
+//     console.log("🚀 ~ file: footer.html ~ line 102 ~ depth01", depth01)
+
+    
+
+//     depth01.on("click", function(e) {
+//       e.preventDefault();// a태그에 기존에 있던 링크 기능을 무력화
+
+
+//       //a에 클릭이벤트가 걸리면 반드시 기존 a가 가지고 있는 링크 기능을 무력화 시켜야한다.
+//       //form안에 있는 button에 클릭 이벤트가 걸리면 button이 가지고 있는 action 링크 기능을 무력화 시켜야한다.
+//       //this는 클릭하고 있는 자신
+
+//       const depth02 = $(this).next(".depth02");
+//       const siblings =$(this).parent().siblings().find(".depth02");
+//       siblings.stop().slideUp();
+//       depth02.stop().slideToggle();
+//       return false;
+//     });
+    
+
+
+    </script>
+    </body>
+  </html>
