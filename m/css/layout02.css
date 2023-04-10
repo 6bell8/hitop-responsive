@@ -20,6 +20,7 @@ a {
   z-index: 99;
   color: #fff;
 }
+
 #header::after {
   content: "";
   display: block;
@@ -30,34 +31,52 @@ a {
   top: 100px;
   pointer-events: none;
 }
+
 #header .container {
   max-width: 1920px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
+
 #header #logo {
   position: absolute;
   left: 50px;
   top: 0;
   height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 #header .online {
   position: absolute;
   top: 20px;
   right: 50px;
   height: 60px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 30px;
   border-radius: 100px;
   border: 1px solid #fff;
 }
+
 #header #gnb:hover::before {
   display: block;
 }
+
 #header #gnb::before {
   content: "";
   display: block;
@@ -69,30 +88,46 @@ a {
   left: 0;
   display: none;
 }
+
 #header #gnb .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 #header #gnb .list > li {
   position: relative;
 }
+
 #header #gnb .list > li:hover .depth01 {
   background-color: #bf0c14;
 }
+
 #header #gnb .list > li:hover .depth01::after {
-  transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
 }
+
 #header #gnb .list > li:hover .depth02 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 #header #gnb .list > li .depth01 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100px;
   padding: 0 50px;
   font-size: 20px;
   font-weight: 500;
   position: relative;
 }
+
 #header #gnb .list > li .depth01::after {
   content: "";
   display: block;
@@ -102,9 +137,14 @@ a {
   right: 20px;
   bottom: 0;
   background-color: #fff;
-  transform: scaleX(0);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
   transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
 }
+
 #header #gnb .list > li .depth02 {
   padding: 30px 10px;
   color: #fff;
@@ -114,9 +154,11 @@ a {
   left: 0;
   width: 600px;
 }
+
 #header #gnb .list > li .depth02 li {
   margin: 0 10px;
 }
+
 #header #gnb .list > li .depth02 li a {
   display: block;
   padding: 10px 0;
